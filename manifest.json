@@ -1,0 +1,12 @@
+{
+  "name": "Path of English",
+  "short_name": "PoE 英語",
+  "description": "你的英語之路：從 26 字母到外商職場",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0b0e14",
+  "theme_color": "#0b0e14",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
