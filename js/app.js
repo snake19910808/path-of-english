@@ -6,6 +6,8 @@ const el = (html) => { const t = document.createElement("template"); t.innerHTML
 const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
 const App = {
+  activeTab: "main",
+
   /* ================= 主畫面 ================= */
   renderHome() {
     const s = Store.load();
@@ -14,16 +16,19 @@ const App = {
     const week = Streak.thisWeekCount();
     const due = SRS.dueItems().length;
     const doneToday = !!s.practiceDays[Dates.todayKey()];
+    const learnedCount = SRS.learnedCount();
+    const titleObj = Story ? Story.getCurrentTitle(learnedCount) : { icon: "🌱", title: "外商實習助理" };
 
-    $app().innerHTML = `
-      <div class="home">
-        <header class="home-head">
-          <div class="logo">⚔️ Path of English</div>
-          <div class="sub">你的英語之路 · 第一章</div>
-        </header>
+    let contentHtml = "";
 
+    if (this.activeTab === "tree") {
+      contentHtml = `<div id="tab-view-tree"></div>`;
+    } else if (this.activeTab === "story") {
+      contentHtml = `<div id="tab-view-story"></div>`;
+    } else {
+      contentHtml = `
         <section class="panel stats-row">
-          <div class="stat"><div class="stat-num">${SRS.learnedCount()}</div><div class="stat-label">已學會單字</div></div>
+          <div class="stat"><div class="stat-num">${learnedCount}</div><div class="stat-label">已學會單字</div></div>
           <div class="stat"><div class="stat-num">${Streak.totalDays()}</div><div class="stat-label">累積練習天</div></div>
           <div class="stat"><div class="stat-num">${due}</div><div class="stat-label">今日待複習</div></div>
         </section>
@@ -45,15 +50,43 @@ const App = {
           <div class="panel-title">📖 ${doneToday ? "今日已完成訓練" : "今晚的任務"}</div>
           ${lesson
             ? `<div class="lesson-preview"><b>${lesson.title}</b><br><span class="dim">${lesson.intro}</span></div>`
-            : `<div class="lesson-preview">第一章全部完成！🎉 目前每天做複習維持記憶，第二章教材即將更新。</div>`}
-        </section>
+            : `<div class="lesson-preview">第一章全數完結！🎉 保持每天複習以穩定記憶，第二章教材規劃中。</div>`}
+        </section>`;
+    }
+
+    $app().innerHTML = `
+      <div class="home">
+        <header class="home-head">
+          <div class="logo">⚔️ Path of English</div>
+          <div class="sub">${titleObj.icon} 職稱：<b>${titleObj.title}</b></div>
+        </header>
+
+        <div class="home-nav-tabs">
+          <button class="tab-btn ${this.activeTab === 'main' ? 'active' : ''}" id="tabMain">⚔️ 每日主線</button>
+          <button class="tab-btn ${this.activeTab === 'tree' ? 'active' : ''}" id="tabTree">🌌 PoE天賦樹</button>
+          <button class="tab-btn ${this.activeTab === 'story' ? 'active' : ''}" id="tabStory">💼 職場劇情</button>
+        </div>
+
+        ${contentHtml}
 
         <div class="bottom-bar">
           <button class="btn btn-ghost" id="btnSettings">⚙️</button>
           <button class="btn btn-primary btn-big" id="btnStart">${doneToday ? "再練一輪 💪" : "開始今日訓練 ▶"}</button>
         </div>
-        <div class="version">v0.1.0 MVP</div>
+        <div class="version">v0.2.0</div>
       </div>`;
+
+    // 繫結 Tab 切換事件
+    document.getElementById("tabMain").onclick = () => { this.activeTab = "main"; this.renderHome(); };
+    document.getElementById("tabTree").onclick = () => { this.activeTab = "tree"; this.renderHome(); };
+    document.getElementById("tabStory").onclick = () => { this.activeTab = "story"; this.renderHome(); };
+
+    // 渲染分頁內容
+    if (this.activeTab === "tree" && window.SkillTree) {
+      SkillTree.render(document.getElementById("tab-view-tree"));
+    } else if (this.activeTab === "story" && window.Story) {
+      Story.render(document.getElementById("tab-view-story"));
+    }
 
     document.getElementById("btnStart").onclick = () => Session.start();
     document.getElementById("btnSettings").onclick = () => App.renderSettings();
@@ -296,6 +329,7 @@ const Session = {
 
     const nextLesson = Course.lesson(s.currentLesson);
     const week = Streak.thisWeekCount();
+    const currentTitle = Story ? Story.getCurrentTitle(SRS.learnedCount()) : null;
 
     this.frame(`
       <div class="card summary">
@@ -306,6 +340,7 @@ const Session = {
           ${st.reviewed ? `<div class="sum-item"><b>${st.reviewed}</b><span>舊字複習</span></div>` : ""}
           ${acc !== null ? `<div class="sum-item"><b>${acc}%</b><span>測驗正確率</span></div>` : ""}
         </div>
+        ${currentTitle ? `<div class="teaser">💼 職場職銜：<b>${currentTitle.icon} ${currentTitle.title}</b><br><span class="dim">${currentTitle.desc}</span></div>` : ""}
         <div class="week-note">🔥 本週已練 <b>${week}</b>/${Streak.GOAL} 天${week >= Streak.GOAL ? " — 達標！" : ""}</div>
         ${nextLesson ? `
           <div class="teaser">
