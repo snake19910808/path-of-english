@@ -507,7 +507,7 @@ const Quiz = {
           <p class="dim">不限時。在腦中找到這個英文字，<b>大聲說出來</b>，然後掀開答案核對。</p>
         </div>
         <button class="btn btn-primary btn-big" id="reveal">我說出來了，掀開答案</button>
-        <div class="reveal-zone" id="rz" hidden>
+        <div class="reveal-zone" id="rz" style="display:none;">
           <div class="big-word">${w.en}</div>
           <button class="btn btn-ghost" id="p1">🔊 聽正確發音</button>
           <div class="row center">
@@ -517,8 +517,9 @@ const Quiz = {
         </div>
       </div>`);
     body.querySelector("#reveal").onclick = (e) => {
-      e.target.hidden = true;
-      body.querySelector("#rz").hidden = false;
+      e.target.style.display = "none";
+      const rz = body.querySelector("#rz");
+      rz.style.display = "flex";
       Audio2.speak(w.en);
     };
     body.querySelector("#p1").onclick = () => Audio2.speak(w.en);
