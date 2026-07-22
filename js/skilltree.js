@@ -23,8 +23,7 @@ const SkillTree = {
   ],
 
   render(containerEl) {
-    const stats = Storage.getStats();
-    const learnedWords = Leitner.getAllWords().length;
+    const learnedWords = SRS ? SRS.learnedCount() : 0;
 
     // 計算各節點解鎖狀態
     const nodesStatus = this.nodes.map(n => {

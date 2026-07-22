@@ -73,7 +73,7 @@ const App = {
           <button class="btn btn-ghost" id="btnSettings">⚙️</button>
           <button class="btn btn-primary btn-big" id="btnStart">${doneToday ? "再練一輪 💪" : "開始今日訓練 ▶"}</button>
         </div>
-        <div class="version">v0.2.0</div>
+        <div class="version">v0.2.1</div>
       </div>`;
 
     // 繫結 Tab 切換事件

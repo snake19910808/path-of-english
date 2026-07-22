@@ -24,7 +24,7 @@ const Story = {
   },
 
   render(containerEl) {
-    const learnedWords = Leitner.getAllWords().length;
+    const learnedWords = SRS ? SRS.learnedCount() : 0;
     const currentTitle = this.getCurrentTitle(learnedWords);
     const nextTitle = this.getNextTitle(learnedWords);
     const episodes = window.STORY_DATA.episodes;
