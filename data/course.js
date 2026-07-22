@@ -170,6 +170,130 @@ window.COURSE = {
         { en: "Good job!", zh: "做得好！" },
         { en: "Have fun!", zh: "玩得開心！" }
       ]
+    },
+    {
+      id: "c1l8",
+      title: "j · v · w",
+      intro: "開始解鎖最後幾個字母發音！v 和 w 很容易混淆，注意 v 要咬下唇，w 嘴唇微噘不用咬。",
+      phonics: [
+        { letter: "j", sound: "dʒ", tip: "雙唇微噘，牙齒輕合發出短促「ㄐ」，喉嚨出聲。", example: "job" },
+        { letter: "v", sound: "v", tip: "上牙輕咬下唇吹氣發「微震動的 ㄈ」，手摸喉嚨感覺震動。", example: "van" },
+        { letter: "w", sound: "w", tip: "雙唇噘成小圓孔，迅速張開發出「ㄨ~」。", example: "win" }
+      ],
+      words: [
+        { en: "job", zh: "工作" },
+        { en: "van", zh: "客貨車" },
+        { en: "win", zh: "贏；獲勝" },
+        { en: "wet", zh: "濕的" },
+        { en: "web", zh: "網頁；網子" },
+        { en: "jam", zh: "果醬；卡住" },
+        { en: "jet", zh: "噴射機" },
+        { en: "vet", zh: "獸醫" },
+        { en: "wax", zh: "蠟" }
+      ],
+      phrases: [
+        { en: "Good luck!", zh: "祝你好運！" },
+        { en: "Nice to meet you.", zh: "很高興認識你。" }
+      ]
+    },
+    {
+      id: "c1l9",
+      title: "x · y · z",
+      intro: "恭喜！學完這課，26 個英文字母的基礎發音全部解鎖完成！",
+      phonics: [
+        { letter: "x", sound: "ks", tip: "「ㄎ+ㄙ」的組合音，輕聲吹出氣，常出現在字尾。", example: "box" },
+        { letter: "y", sound: "j", tip: "字首發短促「ㄧ」，嘴型拉開迅速接後面的母音。", example: "yes" },
+        { letter: "z", sound: "z", tip: "牙齒輕碰發「ㄗ~」，喉嚨震動出聲，像蜜蜂飛過。", example: "zoo" }
+      ],
+      words: [
+        { en: "box", zh: "箱子；盒子" },
+        { en: "fox", zh: "狐狸" },
+        { en: "six", zh: "六" },
+        { en: "yes", zh: "是的" },
+        { en: "yet", zh: "還沒" },
+        { en: "yam", zh: "地瓜" },
+        { en: "zip", zh: "拉鍊" },
+        { en: "zoo", zh: "動物園" }
+      ],
+      phrases: [
+        { en: "Yes, please.", zh: "好的，拜託了。" },
+        { en: "Not yet.", zh: "還沒。" }
+      ]
+    },
+    {
+      id: "c1l10",
+      title: "sh · ch",
+      intro: "進入雙字母發音組合！兩個字母碰在一起會變出新聲音，這也是職場上超高頻出現的組合。",
+      phonics: [
+        { letter: "sh", sound: "ʃ", tip: "雙唇微噘，發出安靜的「噓~」聲，喉嚨不出聲。", example: "ship" },
+        { letter: "ch", sound: "tʃ", tip: "雙唇微噘爆開發出短促「ㄑ」，像火車發動切切切。", example: "chat" }
+      ],
+      words: [
+        { en: "ship", zh: "船；出貨" },
+        { en: "shop", zh: "商店；購物" },
+        { en: "show", zh: "展示；節目" },
+        { en: "fish", zh: "魚" },
+        { en: "dish", zh: "盤子；菜餚" },
+        { en: "chat", zh: "聊天" },
+        { en: "chin", zh: "下巴" },
+        { en: "chip", zh: "晶片；洋芋片" },
+        { en: "rich", zh: "富有的" },
+        { en: "check", zh: "檢查；核對" }
+      ],
+      phrases: [
+        { en: "Check this out.", zh: "看看這個！" },
+        { en: "Show me.", zh: "秀給我看。" }
+      ]
+    },
+    {
+      id: "c1l11",
+      title: "th (無聲/有聲)",
+      intro: "th 是最需要練習咬舌頭的發音！記住訣竅：舌尖微微露出牙齒縫隙再發音。",
+      phonics: [
+        { letter: "th(無聲)", sound: "θ", tip: "舌尖伸出上下牙齒間，輕吹氣發「ㄙ」，喉嚨不出聲。", example: "thank" },
+        { letter: "th(有聲)", sound: "ð", tip: "舌尖咬住，但喉嚨發聲發震動音「ㄉ/ㄗ」。", example: "this" }
+      ],
+      words: [
+        { en: "this", zh: "這個" },
+        { en: "that", zh: "那個" },
+        { en: "them", zh: "他們（受詞）" },
+        { en: "then", zh: "然後" },
+        { en: "with", zh: "和…一起" },
+        { en: "thin", zh: "薄的；瘦的" },
+        { en: "path", zh: "小路；路徑" },
+        { en: "bath", zh: "洗澡" },
+        { en: "think", zh: "思考；認為" },
+        { en: "math", zh: "數學" }
+      ],
+      phrases: [
+        { en: "Thank you very much.", zh: "非常感謝你。" },
+        { en: "What is this?", zh: "這是什麼？" }
+      ]
+    },
+    {
+      id: "c1l12",
+      title: "ck · ing",
+      intro: "第一章大圓滿！ck 常出現在短母音字尾，ing 則是動詞變化的重要鼻音。",
+      phonics: [
+        { letter: "ck", sound: "k", tip: "放在單字字尾發短促「ㄎ」，前面通常是短母音。", example: "back" },
+        { letter: "ing", sound: "ɪŋ", tip: "鼻音「ㄧㄥ」，舌後根頂住軟顎，鼻子發聲。", example: "sing" }
+      ],
+      words: [
+        { en: "back", zh: "後面；返回" },
+        { en: "pack", zh: "打包；包裹" },
+        { en: "pick", zh: "挑選；撿起" },
+        { en: "lock", zh: "上鎖" },
+        { en: "duck", zh: "鴨子" },
+        { en: "king", zh: "國王" },
+        { en: "sing", zh: "唱歌" },
+        { en: "ring", zh: "戒指；響起" },
+        { en: "wing", zh: "翅膀" },
+        { en: "long", zh: "長的" }
+      ],
+      phrases: [
+        { en: "I'll be back.", zh: "我會回來的。" },
+        { en: "Hold on.", zh: "稍等一下。" }
+      ]
     }
   ]
 };
